@@ -1,0 +1,29 @@
+extends ../layout
+
+block scripts
+ script(src='/lexlab-starter/public/fileBroswerApp/client/js/app.js')
+ 
+ link(rel="stylesheet", type="text/css", href="/lexlab-starter/public/fileBroswerApp/client/libs/bootstrap/dist/css/bootstrap.min.css")
+ link(rel="stylesheet", type="text/css", href="/lexlab-starter/public/fileBroswerApp/client/jstree/themes/default/style.min.css")
+ link(rel="stylesheet", type="text/css", href="/lexlab-starter/public/fileBroswerApp/client/css/app.css")
+ //script(src="/fileBroswerApp/client/libs/angular/angular.min.js")
+ script(src="/lexlab-starter/public/fileBroswerApp/client/libs/angular-route/angular-route.min.js")
+ script(src="/lexlab-starter/public/fileBroswerApp/client/libs/jquery/dist/jquery.min.js")
+ script(src="/lexlab-starter/public/fileBroswerApp/client/jstree/jstree.min.js")
+ script(src="/lexlab-starter/public/fileBroswerApp/client/libs/jstree-directive/jsTree.directive.js")
+ script(src="/lexlab-starter/public/fileBroswerApp/client/js/factory.js")
+ script(src="/lexlab-starter/public/fileBroswerApp/client/js/controllers.js")
+ script(src='/lexlab-starter/public/js/app.js')
+ script(type="text/javascript", src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js")
+ script(src="/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js")
+ script(src="/llp_core/bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.js")
+block content
+  .card-fancy
+    .col-md-12
+      .card.card-block
+        #navcontent(ui-view="navcontent")
+        #sidebar(ui-view="sidebar")
+        
+    
+  
+                

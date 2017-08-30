@@ -1,0 +1,35 @@
+extends ../layout
+
+block scripts
+  link(rel="stylesheet", href="/lexlab-starter/public/css/ng-admin.min.css")
+
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js')
+  script(src='//code.angularjs.org/1.6.2/angular.min.js')
+  script(src="//code.angularjs.org/1.2.16/angular-cookies.min.js")
+  //* Auth0 Lock script and AngularJS module **/
+  script(src="//cdn.auth0.com/js/lock-7.9.min.js")
+  //* angular-jwt and angular-storage **/
+  script(src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js")
+  script(src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js")
+  script(src="//cdn.auth0.com/w2/auth0-angular-4.js")
+  script(src='/llp_core/dist/app.bower.js')
+  script(src='/llp_core/dist/app.mini.js')
+  script(src="https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js")
+  script(src="/newwidget/dist/adf-widget-testwidget.min.js")
+  script(src="/getphdwidget/dist/adf-widget-getphd.min.js")
+  script(src="/pagebuilderwidget/dist/adf-widget-pagebuilder.min.js")
+  script(src="/collectionwidget/dist/adf-widget-collectionwidget.min.js")
+  script(src="/treewidget/dist/adf-widget-treewidget.min.js" )
+  script(src='/llp_core/dist/templateCache.js')
+  script(src="/lexlab-starter/public/js/lib/ng-admin.min.js")
+  script(src="/lexlab-starter/public/js/admin.js")
+  script(type="text/javascript", src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js")
+block style
+  link(href="/llp_core/dist/app.full.min.css",rel="stylesheet")
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css", rel="stylesheet")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js", integrity="sha256-GMscmjNs6MbZvXG2HRjP3MpdOGmXv078SRgH7M723Mc= sha512-1wnhBRtA+POGVA0yREk2RlDbJEdkNvMuRBGjT1FCI5wXmpiQHZWDIB8MpANBWM/GKSPDgCA/7HTrAIFgv70/Jw==", crossorigin="anonymous")
+
+block content
+  ui-view
+  pageslide(ps-open="checked", ps-key-listener="true", ps-side="right", ps-class="card-dark")
+    chatpanel

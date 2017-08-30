@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "firebase-lexlab",
+  "private_key_id": "becb9c5f7cbf9dbf35bc0acd79d909b7d1708ee1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCLx9f9779LzHdK\nIIS14IICnWQEBpVF+v1IPy71247BCad0svbi3djHi7pKlBbD/u/Mn60cr/QmZlNx\nenWRBQ9VCntOPc4+KH3BUrrV+ICBz+McbRm2keheKyfuezGEj5HA4wtFJuasUq2b\nmIMYwlGehRxuYB8UO7wSr0FcQziJZGWDC6Zpa/eK1ln/H/j5DxceqR4fx7fy9eJV\np+not/xI9akwLZo7DJazhoIUwQnpj3Sy9BxrWcbVYfQTOuGxZwjxZbyhbHkd3IF3\nVeDVpstSESjPDqwG76xMHdbm2af/G8b8BR5UrT23sXY8qE+EDJ80qmgufzWu2HUd\nD04xt7ojAgMBAAECggEAKacGdPQhM+wcy+j+wtfAxhiyegSgLLdLDGFPlBG1603+\nKWc+7IGhHG1FuP2B/yuTt40JX9gKz/qD+Pe92tYAKJ4z+i+uqpUUTCxj4mjnmkch\nbRIRrHa0IIOJpaXuLos9qpW9gQDDkiwc8ZWz0wfsnGkb/MQF3tiiBYtV1bFuQnpI\nRS9a7cEG9GS3oZZ8yeivGLJ3PayH3kxjfduu7Is/o9uXKr6N3QgWqiCSPFtkOXaw\nZ2mYM5cIDm01qXq6hMKbFXWPekcNHzRIi2S2Dgk2FnhJofS1g8iHxPQ/fa7bXTxF\nMRpvTjJOUt9yAtNuejuBhKp/QnqxRAt4HVXySVXFsQKBgQDK7rqLLfgEVIfeH2J3\nXkZKCHip2KPkT+eOcR1MCCc3vbGoXpGPFaW2XMmZVDXFx59aAbaux3e18hsbj19p\n/3NvNdyEFwZooNSE73GPjqPz2Cj1JofD2GEyj6WUpUZ3zbEHl2Ri2JEG9JxU3nrr\nS8GtYGqoRAHlI9xrNC6uzUCd+wKBgQCwVW0XjBkptm93DyBuydak0yg1qzpafQzq\nKvIxBP4KH6c5Au2cb3Qevx6XLXTAOLV4gpKt5YqisKJh+iHPFaDproYTWnQFG1BF\na2PitW91d3ALx0aJemPMp9LExHKgJz/Zrys7z5C6/LzYPnLMUhCPzMbgDxA9iem/\n/gID9XJj+QKBgQC1tNE/8mdTqUUHNV77t2SEwdUZcCxAMPQL7WjoPZywIqDDO/pl\n/mIlSiwRqP+FGtuqwkILefvM5P40zUoIJX39JGNRuzQ311qztZsfif9wRitWZ6vF\nRyixF0KSOPNCLuHHBF4UzAoACmM48wVpTqobTmvyQwLXZCbnrw/l4U9spQKBgEYN\nag2Uxtpfc+DkzYm1/eP1T2Ai6kfQrjTJYvY+eX4kHRb1JtijHoqoesqscFl9Lfr2\nRLd5HZ6MdbZe3NecTBUKFJHTuYvd0gICK+iBFAqirIzBWjB7wvInKgCp2q/tZ9xf\nTtmwGFtw1MVD6e9qGtJGFCwnT9hi1c5EZyCTfiJhAoGAf94Zosbe49uD/IFvDrQT\np5xxkXnCucCb4V98Z1UKn7xUwFzTbGZ3mFc88yrC32M/gez24QcrvA9/8l3ZUmvF\n2ZVUuxaM4950UnQUZJ6U7BS/Ugk03WyqjKRfh6vKcHWQFK0ZfWWp0RHE7aDFPUZH\n8djRBzqfHxCaZ+SLHFEMlR4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "authtokenprovider@firebase-lexlab.iam.gserviceaccount.com",
+  "client_id": "106751057627836630828",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/authtokenprovider%40firebase-lexlab.iam.gserviceaccount.com"
+}

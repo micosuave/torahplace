@@ -1,0 +1,92 @@
+extends ../layout
+
+block scripts
+  base(href="/report",target="_top")
+  script
+    | var console = window.console;
+  link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Julius+Sans+One|EB+Garamond&subset=latin,latin-ext")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js")
+  link(href='/llp_core/dist/app.full.min.css', rel='stylesheet', title='CompiledPhD')
+  script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js")
+  script(src='/llp_core/dist/app.bower.js')
+  script(data-require='jszip@2.4.0', data-semver='2.4.0', src='https://cdn.rawgit.com/Stuk/jszip/v2.4.0/dist/jszip.js', data-build='exclude')
+  script(src="/lexlab-starter/public/js/d3app.js")
+  //script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-touch.js')
+  script(src='https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js')
+  script(src='/newwidget/dist/adf-widget-testwidget.js')
+  script(src='/getphdwidget/dist/adf-widget-getphd.js')
+  script(src='/pagebuilderwidget/dist/adf-widget-pagebuilder.js')
+  script(src='/collectionwidget/dist/adf-widget-collectionwidget.js')
+  script(src='/treewidget/dist/adf-widget-treewidget.js')
+  script(src='/llp_core/dist/app.mini.js')
+  script(src='/llp_core/dist/minicache.js')
+  
+  script(src="https://www.dropbox.com/static/api/2/dropins.js", id="dropboxjs", data-app-key="si21h6tw2o3msis")
+  
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.6/jquery.slimscroll.js")
+  
+  //script(src="/llp_core/modules/common_services/partial/pdfmake/pdfmake.js")
+   
+  link(href="../timetracker/dist/adf-widget-timetracker.css")
+  link(rel="stylesheet",href="../newwidget/src/style.css")
+  link(href="//cdn.materialdesignicons.com/1.1.70/css/materialdesignicons.min.css")
+  script
+    | angular.module('mini').value('$firebaseToken', '!{token}');
+  script
+    | angular.module('!{application}').constant('FIREBASE_URL', 'https://!{firebase_url}/');
+  script
+    | CKEDITOR.dtd.$removeEmpty['span','i'] = false;
+  
+block content
+  .animated.row.card-deck.clear-fix(style="margin-top:75px;")
+    .toast.toast-info.btn-glass
+      h6.fa.fa-3x.fa-ge|{{app.filehistories.total}}
+        label|&nbsp;&nbsp;TOTAL
+    .toast.toast-success.btn-glass
+      h6.fa.fa-3x.fa-check|{{app.filehistories.complete}}
+        label|&nbsp;&nbsp;COMPLETE
+    .toast.toast-warning.btn-glass
+      h6.fa.fa-3x.fa-alert|{{app.filehistories.incomplete}}
+        label|&nbsp;&nbsp;INCOMPLETE
+  .animated.row
+    .col-md-6
+      .card.card-block.img-shadow(style="margin:2.5%;padding:2.5%;display:flex;flex-flow:row wrap;justify-content:space-between;perspective:1200px;transform-style:preserve-3d;")
+        figure(draggable,style="width:100px;height:100px;border:0px groove #ddd;float:left;margin:2.5px;perspective:500px;transform-style:preserve-3d;transition:all 0.2s ease;position:relative;background-color:transparent;",ng-repeat="history in app.filehistories.data | filter: report.query | orderBy: [prop,'id'] :maybe")
+          img(src="/patents/{{history.id || history.funconfig.IPAYEAR + history.funconfig.IPANUM}}/preview", style="width:100%;height:100%;transition:all 0.2s ease;",class="img img-shadow", ng-class="{'img-thumbnail highlight':(history.mouseover == true) }", ng-mouseenter="history.mouseover = true", ng-mouseleave="history.mouseover = false", ng-dblclick="app.refresh(history)", data-contextmenu="patentreport")
+          a.label.btn(ng-click="app.dofunction(history)",style="position:absolute;left:0;top:100%;right:0;text-align:center;border-radius:20px;box-shadow:inset 0 0 30px rgba(250,250,250,0.75),-1px 1px 5px rgba(0,0,0,0.5),inset -1px 1px 5px rgba(0,0,0,0.5);background-color:rgba(0,0,0,0.25);border:2.5px ridge black;transform-origin:50% 50%;transform:translateZ(5px)translateY(-25px);transition:all 0.2s ease;color:black;")|{{(history.id | number:0) || history.application.utility}}
+    .col-md-6
+      .card.card-block.img-shadow(style="margin:2.4%;padding:2.5%;")
+        a.badge(style="position:absolute;z-index:2;right:5px;",ng-click="report.query = ''")
+          i.fa.fa-close
+        input.pull-right(style="position:absolute;z-index:1;right:5px;",placeholder="Search...",ng-model="report.query")
+        table.table.table-stripped.table-condensed.table-hover.table-resonsive(style="z-index:0;")
+          thead
+            th(ng-click="maybe = !maybe;prop = 'isReedTech'")|<i class="fa fa-check"></i>
+            th(ng-click="maybe = !maybe;prop = 'appnum'")|#
+            th(ng-click="maybe = !maybe;prop = 'id'")|ID
+            th(ng-click="maybe = !maybe;prop = 'claims_issued_total'")|Issued / Pending
+            th(ng-click="maybe = !maybe;prop = 'art_unit'")|Art Unit
+            th(ng-click="maybe = !maybe;prop = 'file.fstat.size'")|FileSize
+            th(ng-click="maybe = !maybe;prop = 'title'")|Title
+            th(ng-click="maybe = !maybe;prop = 'file.added'")|Added
+            th(ng-click="maybe = !maybe;")|Links
+            
+          tbody
+            tr.animated.staggered(ng-repeat="history in app.filehistories.data | filter: report.query | orderBy: [prop,'id'] :maybe",ng-mouseenter="history.mouseover = true", ng-mouseleave="history.mouseover = false",ng-class="{'primary tr-primary':(history.mouseover == true) }")
+              td|<span ng-class="{'fa-check text-success':(history.isReedTech === true),'fa-google text-danger':(history.isReedTech !== true)}" class="fa "></span>
+              td(ng-class="{'NOA':(app.list.indexOf(history.id) > -1)}")|{{$index}}
+              td|<strong>{{history.patent}}</strong><br>({{history.application.utility}})
+              td|{{history.claims_issued_total}} / {{history.claims_pending_total}}<br>({{history.claims_issued_total / history.claims_pending_total * 100 | number:1}}%)
+              td(ng-bind-html="history.art_unit | highlight: report.query | trustAsHTML")|{{history.art_unit}} 
+              td(ng-bind-html="history.file.size")
+              td(ng-bind-html="history.title | highlight: report.query | trustAsHTML")|{{history.title}}
+              td(ng-bind-html="history.file.added | date")
+              td
+                a(ng-repeat="link in history.links", ng-click="app.getphd(link)", ng-bind="link", ng-init="num = link.replace(/\D/,'');", ng-class="{'fa-check text-NOA':(app.filehistories[num])}", class="fa")
+            tr(ng-repeat="record in app.allrecords")
+              td(ng-bind="record.$id")
+              td(ng-bind="record.title")
+              td
+                a(class="fa fa-remove text-danger", ng-click="app.allrecords.$remove(record)")
+                  i.fa.fa-close

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html style="font-size:!{fontSize};font-family:'Helvetica',sans-serif !important;" class="html" ng-app="d3app">
+
+<head>
+    <base href="/lexlab-starter/public/3Dchart/alt.html">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' , content='IE=edge'>
+    <meta name='viewport' , content='width=device-width, initial-scale=1.0'>
+    <meta name='csrf-token' , content=_csrf>
+    <title> </title>
+    <!-- Add to homescreen for Chrome on Android-->
+    <meta name='mobile-web-app-capable' , content='yes'>
+    <link rel='icon' , sizes='192x192' , href='/llp_core/apple-touch-icon.png'>
+    <!--// Add to homescreen for Safari on iOS-->
+    <meta name='apple-mobile-web-app-capable' , content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' , content='black'>
+    <meta name='apple-mobile-web-app-title' , content='LexSpace'>
+    <link rel='apple-touch-icon-precomposed' , href='/llp_core/apple-touch-icon.png'>
+    <!--//link  rel='stylesheet', href='/llp_core/assets/filepicker.css'>
+<!--//link  rel='stylesheet', href='../blur-admin/release/styles/app-6ad1361e34.css'>-->
+
+    <link rel='stylesheet' , href='/lexlab-starter/public/css/jquery.oembed.css'>
+    <!--//script  src="https://cdn.auth0.com/js/lock-7.12.min.js">-->
+    <link href='https://fonts.googleapis.com/css?family=Dosis' , rel='stylesheet' , type='text/css'>
+    <link rel='stylesheet' , href='/lexlab-starter/public/css/jquery.pageslide.css'>
+    <link rel='stylesheet' href='/llp_core/bower_components/angular-loading-bar/build/loading-bar.css'>
+    <link rel='stylesheet' , href='/llp_core/node_modules/tether/dist/css/tether.css'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" , rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" , rel="stylesheet">
+    <link href="/llp_core/dist/app.full.min.css" , rel="stylesheet">
+    <!--//link  href="/llp_core/dist/app.full.less.css", rel="stylesheet">-->
+
+    <link rel="stylesheet" , href="https://cdnjs.cloudflare.com/ajax/libs/tether-select/1.1.1/css/select-theme-default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether-select/1.1.1/js/select.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+    <!--//script. var $ = new jQuery  >;-->
+    <script src='https://apis.google.com/js/client.js'></script>
+    <script src='https://apis.google.com/js/api.js'></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script src="/lexlab-starter/public/jQuery-Plugin-For-Auto-Resizing-iFrame-iFrame-Resizer/src/iframeResizer.js"></script>
+    <script src="/lexlab-starter/public/js/jquery.pageslide.js"></script>
+    <!--//script  src="/llp_core/bower_components/filepicker-js/filepicker.js">-->
+    <!--//script  src="/llp_core/bower_components/filepicker-js/filepicker_debug.js">-->
+    <script src="https://cdn.ckeditor.com/4.5.7/full-all/ckeditor.js"></script>
+    <script src="/llp_core/ckeditor/ckeditor.js"></script>
+    <script src="/llp_core/ckconfig.js"></script>
+    <script src="/llp_core/ckeditor2/plugins/chart/lib/chart.min.js"></script>
+    <script src="/llp_core/ckeditor2/plugins/chart/widget2chart.js"></script>
+       <link rel='stylesheet' href='/llp_core/dist/app.full.min.css' />
+
+                                <script src='/lexlab-starter/public/js/lib/jquery.oembed.js'></script>
+
+                                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+                                <script src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js"></script>
+                                <!--// script  src="/lexlab-starter/node_modules/angular/angular.min.js">-->
+                                <script src='/llp_core/bower_components/angular-animate/angular-animate.min.js'></script>
+                                <script src='/lexlab-starter/node_modules/angular-sanitize/angular-sanitize.min.js'></script>
+                                <script src='/lexlab-starter/node_modules/videogular/videogular.js'></script>
+                                <script src='/lexlab-starter/node_modules/videogular-controls/vg-controls.js'></script>
+                                <script src='/lexlab-starter/node_modules/videogular-overlay-play/vg-overlay-play.js'></script>
+                                <script src='/lexlab-starter/node_modules/videogular-poster/vg-poster.js'></script>
+                                <script src='/lexlab-starter/node_modules/videogular-buffering/vg-buffering.js'></script>
+                                <script src="/llp_core/bower_components/angular-pageslide-directive/dist/angular-pageslide-directive.js"></script>
+                                <script src="/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js"></script>
+                                <script src="../timetracker/angular-time-pausetracker/js/roundProgress.min.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.6/jquery.slimscroll.js"></script>
+                                <script src="../timetracker/dist/adf-widget-timetracker.js"></script>
+                                <script src="/llp_core/dist/app.bower.js"></script>
+                                <script src='https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js'></script>
+                                <script src='/newwidget/dist/adf-widget-testwidget.js'></script>
+                                <script src='/getphdwidget/dist/adf-widget-getphd.js'></script>
+                                <script src='/pagebuilderwidget/dist/adf-widget-pagebuilder.js'></script>
+                                <script src='/collectionwidget/dist/adf-widget-collectionwidget.js'></script>
+                                <script src='/treewidget/dist/adf-widget-treewidget.js'></script>
+                                <script src='/llp_core/bower_components/angular-loading-bar/build/loading-bar.js'></script>
+                                <script src='/llp_core/node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js'></script>
+                                <script src='/llp_core/dist/app.mini.js'></script>
+                                <script src='/llp_core/dist/minicache.js'></script>
+                                <script src='/lexlab-starter/public/js/main.js'></script>
+                                <script src="/lexlab-starter/public/js/d3app.js"></script>
+
+    <!--<script  type='text/javascript'>
+  iFrameResize  { log: true,enablePublicMethods: true, resizedCallback: function  messageData>{ $  'p#callback'>.html   '<b>Frame ID:</b> '    + messageData.iframe.id + ' <b>Height:</b> '     + messageData.height + ' <b>Width:</b> '<+ messageData.width + ' <b>Event type:</b> ' + messageData.type >; } }>;
+<script. var options = { log: true, autoResize:true, heckOrigin:false, enablePublicMethods:true, messageCallback:function  {iframe,message}></script>{}, resizedCallback:function  {iframe,height,width,type}>{}, sizeHeight:true, sizeWidth:true, }iFrameResize  {options},"iframe">;
+   <!-- //   script  src="https://cdn.peerjs.com/0.3/peer.min.js">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+        
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+
+    <body class="html3 badmin-transparent" data-ng-controller="ReportController as report" pageslide-helper>
+
+        <div id="container"></div>
+         <div class="column pull-right" style="overflow:visible;">
+                <div ng-href="/3dchart" style="width:200px;height:200px;position:absolute;top:50px;right:100px;" ,z="100" cubed three="<div class='stage' style='width:100px;height:100px;transform:scale3d(0.5,0.5,0.5)translateZ(-300px);'><div class='cubespinner'><div class='face1'></div><div class='face2'></div><div class='face3'></div><div class='face4'></div><div class='face5'></div><div class='face6'></div></div><img src='/llp_core/img/Earth_256.png' style='width:50px;height:50px;'/></div>" two=""  one="" four="" five=""  six=""  draggable="">
+                    <div ng-href="/3dchart" style="width:200px;height:200px;position:absolute;top:50px;right:80px;perspective:1500px;perspective-origin:50% 50% 50px;" z="100" cubed three="" , two="" , one="" , four=""  five=""  six=""  draggable="">
+                        <img src='/llp_core/img/lll3.svg' style='width:95%;height:95%;margin:2.5%;perspective-origin:100% 20%' />
+                    </div>
+                </div>
+        <div class="jumbotron btn-glass btn-dark text-left" style="width:700px;height:300px;perspective:1000px;perspective-origin:100% 20%;transform-style:preserve-3d;margin-bottom:0;background-size:100% 100%;background-position:0 0 !important;">
+           
+                <div class="column pull-left clearfix" style="box-shadow: 5px 5px 10px black;border-color:transparent;filter:contrast(1.1)drop-shadow(0 0 10rem black);-webkit-filter:contrast(1.1)drop-shadow(0 0 10rem black);">
+                    <h2 class="display-4 text-left hovergold" style="text-shadow:1px 0px 5px rgba  50,50,50,0.5>;transform:translate3d  0px,0px,50px>"> &nbsp;&nbsp;Welcome to LexSpace</h2>
+                    <h4 class="lead text-left" style="padding-left:20px;text-shadow:1px 0px 5px rgba  250,250,250,0.75>;transform:translate3d  0px,0px,25px>"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; info<span style="color:steelblue;filter:brightness  1.4>;-webkit-filter:brightness  1.4>">structure</span> for the way lawyers think, and work.
+<small class="text-muted">
+<a class="btn"  ng-click="" style="text-shadow:1px 0px 5px rgba  250,250,250,0.75>;transform:translate3d  0px,0px,25px>"> &nbsp;&nbsp;&nbsp;&nbsp; <sub>Learn more »</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></small></h4>
+
+                    <div class="card-deck-wrapper copyright-wrapper" style="padding:0.5rem;margin:0.5rem;">
+                        <div class="card-deck">
+                            <div class="card card-Applicant card-block col-md-3 col-xs-6">
+                                <!--<<    h2.card-title lexspace.net  
+<<<small.pull-right
+<<<  a.card-link  uib-tooltip="Click here to read more about LexLab",href='', role='button'> &nbsp;&nbsp;&nbsp;&nbsp;<label class='pull-right'>more »</label>
+<<    p.text-Applicant  Smart workspace. 
+<<
+<<    img.card-img-bottom.img.img-responsive  src='/llp_core/img/lexlab.png',style='filter:drop-shadow  -2px 2px 10px rgba  0,0,0,0.25>>;-webkit-filter:drop-shadow  -2px 2px 2px rgba  0,0,0,0.25>>', class='btn img img-thumbnail' alt='LexLab logo'>
+<<.card.card-NOA.card-block.col-md-3.col-xs-6
+<<    h2.card-title Patent PhD<
+<<< small.pull-right
+<<<   a.card-link  uib-tooltip="Click here to demo LexLab & PatentPhD",href='/app/#', role='button'> &nbsp;&nbsp;&nbsp;&nbsp;<label class='pull-right'>more »</label>  
+<<    p.text-NOA Machine intelligence.  
+<     
+<<    img.card-img-bottom.img.img-responsive  src='/llp_core/img/logolong.png',style='width: 100%;margin-top:2rem;filter:drop-shadow  inset 2px 2px 5px rgba  0,0,0,0.25>;-webkit-filter:drop-shadow  inset 2px 2px 5px rgba  0,0,0,0.25>>;', class='btn img img-thumbnail',alt='PatentPhD logo'>    
+<<.card.card-Petition.card-block.col-md-3.col-xs-6
+<<  
+<<    h2.card-title L I O N
+<<<small.pull-right
+<<<   a.card-link  uib-tooltip="read more",href='/about/lion', role='button'> &nbsp;&nbsp;&nbsp;&nbsp;<label class='pull-right'>more »</label>   
+<<<//small.card-subtitle <strong>L</strong>egal <strong>I</strong>nformation <strong>O</strong>rganizing <strong>N</strong>etwork< 
+<<    p.text-Petition  Trusted network.
+<<
+<<    img.card-img-bottom.img.img-responsive  src='/llp_core/img/Liion.svg', style='width:100%;height:150px;margin-top: 1rem;filter:drop-shadow  inset 2px 2px 5px rgba  0,0,0,0.25>;-webkit-filter:drop-shadow  inset 2px 2px 5px rgba  0,0,0,0.25>>;', class='btn img img-thumbnail'><<  
+<<.card.card-PTO.card-block.col-md-3.col-xs-6
+<< 
+<<    h2.card-title LEO
+<<<small.pull-right
+<<<  a.card-link  uib-tooltip="for your reading pleasure",href='https://www.linkedin.com/pulse/20141014131436-24942309-technology-for-the-way-lawyers-think-and-work-a-story-for-our-time', ,role='button'> &nbsp;&nbsp;&nbsp;&nbsp;<label class="pull-right">more »</label>
+<<    p.text-PTO The world's first Robot Associate.
+<<    img.card-img-bottom.img-responsive  src='/llp_core/img/robots.png',style='width:100%;height:auto;margin-top:1rem;margin-bottom:1rem;filter:drop-shadow  inset 2px 2px 5px rgba  0,0,0,0.25>;-webkit-filter:drop-shadow   2px 2px 5px rgba  0,0,0,0.25>>;'>  -->
+
+                            
+
+                                <script src="js/third-party/threejs/three.js"></script>
+                                <!--<!--<script src="js/third-party/threejs/StereoEffect.js"></script>-->
+                                <!--<script src="js/third-party/threejs/DeviceOrientationControls.js"></script>-->
+                                <script src="js/third-party/threejs/OrbitControls.js"></script>
+                                <script src="js/optimer_bold.typeface.js"></script>
+                                <script src="js/optimer_regular.typeface.js"></script>
+                                <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+                                <script>
+                                    var camera, scene, renderer;
+                                    var effect, controls;
+                                    var element, container;
+                                    var marginbottom = 4,
+                                        chartwidth = 90,
+                                        chartheight = 30; //3D units
+                                    var xscale = d3.scale.linear().range([-chartwidth / 2, chartwidth / 2]),
+                                        yscale = d3.scale.linear().range([0, chartheight]);
+
+
+                                    var clock = new THREE.Clock();
+
+                                    init();
+                                    animate();
+
+                                    function init() {
+                                        renderer = new THREE.WebGLRenderer();
+                                        element = renderer.domElement;
+                                        container = document.getElementById('container');
+                                        container.appendChild(element);
+
+                                        // effect = new THREE.StereoEffect(renderer);
+
+                                        scene = new THREE.Scene();
+
+                                        camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
+                                        camera.position.set(0, 15, 30);
+                                        scene.add(camera);
+
+                                        controls = new THREE.OrbitControls(camera, element);
+                                        controls.rotateUp(Math.PI / 4);
+                                        controls.target.set(
+                                            camera.position.x,
+                                            camera.position.y + 0.1,
+                                            camera.position.z - 0.1
+                                        );
+                                        controls.noZoom = false;
+                                        controls.noPan = false;
+
+                                        function setOrientationControls(e) {
+                                            if (!e.alpha) {
+                                                return;
+                                            }
+
+                                            controls = new THREE.DeviceOrientationControls(camera, true);
+                                            controls.connect();
+                                            controls.update();
+
+                                            element.addEventListener('click', fullscreen, false);
+
+                                            window.removeEventListener('deviceorientation', setOrientationControls, true);
+                                        }
+                                        window.addEventListener('deviceorientation', setOrientationControls, true);
+
+
+                                        var light = new THREE.HemisphereLight(0x777777, 0x000000, 0.6);
+                                        scene.add(light);
+
+                                        var objlight = new THREE.PointLight(0xffffff, 0.7);
+                                        objlight.position.set(0, 50, 70);
+                                        scene.add(objlight);
+
+                                        var texture = THREE.ImageUtils.loadTexture(
+                                            'textures/patterns/yellowchecker.png'
+                                        );
+                                        texture.wrapS = THREE.RepeatWrapping;
+                                        texture.wrapT = THREE.RepeatWrapping;
+                                        texture.repeat = new THREE.Vector2(50, 50);
+                                        texture.anisotropy = renderer.getMaxAnisotropy();
+
+                                        spectexture = THREE.ImageUtils.loadTexture(
+                                            'textures/patterns/darkbluechecker.png'
+                                        );
+                                        spectexture.wrapS = THREE.RepeatWrapping;
+                                        spectexture.wrapT = THREE.RepeatWrapping;
+                                        spectexture.repeat = new THREE.Vector2(50, 50);
+                                        spectexture.anisotropy = renderer.getMaxAnisotropy();
+
+                                        var material = new THREE.MeshPhongMaterial({
+                                            color: 0xffffff,
+                                            specular: 0xffffff,
+                                            shininess: 5,
+                                            shading: THREE.FlatShading,
+                                            map: texture,
+                                            specularMap: spectexture
+                                        });
+
+                                        var geometry = new THREE.PlaneGeometry(1000, 1000);
+
+                                        var mesh = new THREE.Mesh(geometry, material);
+                                        mesh.rotation.x = -Math.PI / 2;
+                                        scene.add(mesh);
+
+                                        window.addEventListener('resize', resize, false);
+                                        setTimeout(resize, 1);
+
+                                        /////// START CONTENT HERE ////////
+                                       var data=[];
+                                        var ref = new Firebase(FIREBASE_URL+'/content/REPORT' );
+                                        ref.once('value', function(snapshot){
+                                            var datalist = snapshot.child('roarlist').exportVal();
+                                            datalist.forEach(function(d, i , a){
+                                                var refa = new Firebase(FIREBASE_URL+'/content/'+d.$value);
+                                                refa.once('value', function(snap){
+                                                    data.push(snap.exportVal());                                                })
+                                            }) 
+                                        }) 
+                                        var color = d3.scale.ordinal().range(['rgba(0,0,0,0.25)', '#68a4d6', '#9ebb4f', '#d6a400', '#860024', '#880096', 'rgba(255,255,255,0.9)']);
+
+                        var tooltip = d3.select('body').append('div')
+                            .attr('id', 'ttipcontainer')
+                            .style("position", "absolute")
+                            .style("padding", "0.25vmin")
+                            .style("background", "rgba(50,50,50,0.5)")
+                            .style("-webkit-backdrop-filter", "blur(0.8pt)")
+                            .style("-webkit-filter", "blur(0.2vmin)")
+                            .style("filter", "blur(0.2vmin)")
+                            .style("color", "#ddd")
+                            .style("width", "75vmin")
+                            .style("border-radius", "1vmin")
+                            .style("opacity", 0)
+                            .style("font-size", "3vmin");
+                            
+                             d3.json('/files/public/uspto/report.json', population, function(data) {
+                                            xscale.domain([0, data.length - 1]);
+                                            yscale.domain([0, d3.max(data, function(d) {
+                                                return d.pending;
+                                            })]);
+
+                                            var columnwidth = (chartwidth / data.length);
+                                            columnwidth -= columnwidth * 0.1;
+
+                                            var columnmaterial = new THREE.MeshPhongMaterial({
+                                                color: "#ffa000",
+                                                emissive: "#005a9a"
+                                            });
+var info = function(d) {
+                            var sc = $scope.$new();
+                            sc.claim = d;
+                            sc.closeCard = function() {
+                                newEl.remove();
+                                sc.$destroy();
+                            };
+                            var newEl = $(document.createElement('div'));
+                            newEl.attr('id', d.id).addClass('card card-fancy sub-independent').css('position', 'absolute').css('width', '90vmin').css('font-size', '3vmin').css('z-index', '100000');
+                            newEl.html('<a class="text-muted" style="position:absolute;right:1vmin;" ng-click="closeCard()"><span class="pull-right">&times;</span></a><h6><b>' + d.name + '</b></h6><p ng-bind-html="claim.text | highlight: $parent.pattern | trustAsHTML"></p>');
+                            var a = $compile(newEl)(sc);
+                            a.appendTo($('body')).hide();
+                            newEl.draggable({
+                                stack: '.card',
+                                cursor: 'move',
+                                handle: 'h6'
+                            }).resizable();
+
+                            return newEl.slideDown({
+                                duration: 500
+                            });
+                        };
+
+                                            data.forEach(function(d, i, a) {
+                                                var colheight = yscale(d.total);
+                                                var columngeo = new THREE.BoxGeometry(columnwidth, colheight, columnwidth);
+                                                var columnmesh = new THREE.Mesh(columngeo, columnmaterial);
+                                                columnmesh.position.set(xscale(i), colheight / 2 + marginbottom, 0); //Box geometry is positioned at its’ center, so we need to move it up by half the height
+                                                    columnmesh.on("mouseover", function(d) {
+                                tooltip.html('<div class="img img-thumbnail" style="text-align: left; width: 90vw;"><h6>' + d.name + '</h6><blockquote style="color:#ddd;">' + d.text + '</blockquote></div>')
+                                    .transition().duration(250).style("opacity", 1)
+                                    .style('left', (d3.event.pageX) + 'px')
+                                    .style('top', (d3.event.pageY) + 'px')
+                                    //  .style("left","1vmin")
+                                    //  .style("top", "2vmin")
+                                    .style("z-index", 2000)
+                                    .style("-webkit-filter", "blur(0px)")
+                                    .style("filter", "blur(0px)");
+
+
+                                d3.select(this)
+                                    .transition().duration(250)
+                                    .style("opacity", 0.66)
+                                    .style("-webkit-backdrop-filter", "blur(0.2vmin)")
+                                    .style("-webkit-filter", "blur(0.2vmin)")
+                                    .style("filter", "blur(0.2vmin)")
+                                    .style("background", "rgb(50,50,50)")
+                                    .style("cursor", "pointer");
+                            })
+                            .on("mouseout", function(d) {
+                                tooltip.transition().duration(250)
+                                    .style("opacity", 0)
+                                    .style("z-index", -1);
+                                d3.select(this)
+                                    .transition().duration(250)
+                                    .style("opacity", 1)
+                                    .style("-webkit-filter", "blur(0vmin)")
+                                    .style("filter", "blur(0vmin)")
+                                    .call(colorize);
+                            })
+                            .on("click", function(d) {
+
+                                info(d);
+                            });
+
+                                                scene.add(columnmesh);
+                                            });
+
+                                            yscale.ticks(5).forEach(function(t, i, a) {
+                                                //Draw label
+                                                var label = createType({
+                                                    text: "" + (t / 100),
+                                                    size: 1.5
+                                                });
+                                                var xOffset = (label.geometry.boundingBox.max.x - label.geometry.boundingBox.min.x);
+                                                label.position.set(-chartwidth / 2 - xOffset - 2.5, yscale(t) + marginbottom - 0.5, 0);
+                                                scene.add(label);
+
+                                                //Draw line
+                                                var lineGeometry = new THREE.Geometry();
+                                                var vertArray = lineGeometry.vertices;
+                                                vertArray.push(new THREE.Vector3(-chartwidth / 2 - 1.5, yscale(t) + marginbottom, 0),
+                                                    new THREE.Vector3(chartwidth / 2, yscale(t) + marginbottom, 0));
+                                                lineGeometry.computeLineDistances();
+                                                var lineMaterial = new THREE.LineBasicMaterial({
+                                                    color: 0xaaaaaa
+                                                });
+                                                var line = new THREE.Line(lineGeometry, lineMaterial);
+                                                scene.add(line);
+
+                                            });
+
+                                        });
+
+                                        function population(d) {
+                                            d.id  = d.id;
+                                            d.date = d.date;
+                                            d.pending = +d.pending;
+                                            d.original = +d.original;
+                                            d.canceled = +d.canceled;
+                                            d.withdrawn = +d.withdrawn;
+                                            return d;
+                                        }
+
+                                        var logo = createType({
+                                            element: "/llp_core/img/lll3.svg"
+                                        });
+                                        logo.position.set(chartwidth / 2, chartheight / 2, 20);
+                                        scene.add(logo);
+
+                                        var title = createType({
+                                            text: "Claims since the mid 2000s"
+                                        });
+                                        title.position.set(-chartwidth / 2, chartheight + 10, -5);
+                                        scene.add(title);
+
+                                        var xzerolabel = createType({
+                                            text: "Issued",
+                                            size: 1.5
+                                        });
+                                        xzerolabel.position.set(-chartwidth / 2 - 1, 2, 0);
+                                        scene.add(xzerolabel);
+
+                                        var x100label = createType({
+                                            text: "Allowed",
+                                            size: 1.5
+                                        });
+                                        var xOffset = (x100label.geometry.boundingBox.max.x - x100label.geometry.boundingBox.min.x);
+                                        x100label.position.set(chartwidth / 2 - xOffset, 2, 0);
+                                        scene.add(x100label);
+
+                                        var srctext = createType({
+                                            text: "Source: United States Patent & Trademark Office",
+                                            size: 1
+                                        });
+                                        var xOffset = 0.5 * (x100label.geometry.boundingBox.max.x - x100label.geometry.boundingBox.min.x);
+                                        srctext.position.set(0 - xOffset, 1, 0);
+                                        scene.add(srctext);
+
+                                    }
+
+
+
+                                    function resize() {
+                                        var width = container.offsetWidth;
+                                        var height = container.offsetHeight;
+
+                                        camera.aspect = width / height;
+                                        camera.updateProjectionMatrix();
+
+                                        renderer.setSize(width, height);
+                                        // effect.setSize(width, height);
+                                    }
+
+                                    function update(dt) {
+                                        resize();
+
+                                        camera.updateProjectionMatrix();
+
+                                        controls.update(dt);
+                                    }
+
+                                    function render(dt) {
+                                        renderer.render(scene, camera);
+                                        // effect.render(scene, camera);
+                                    }
+
+                                    function animate(t) {
+                                        requestAnimationFrame(animate);
+
+                                        update(clock.getDelta());
+                                        render(clock.getDelta());
+                                    }
+
+                                    function fullscreen() {
+                                        if (container.requestFullscreen) {
+                                            container.requestFullscreen();
+                                        } else if (container.msRequestFullscreen) {
+                                            container.msRequestFullscreen();
+                                        } else if (container.mozRequestFullScreen) {
+                                            container.mozRequestFullScreen();
+                                        } else if (container.webkitRequestFullscreen) {
+                                            container.webkitRequestFullscreen();
+                                        }
+                                    }
+
+                                    function createType(options) {
+                                        var height = options.height || 0,
+                                            size = options.size || 3,
+                                            material = new THREE.MeshFaceMaterial([
+                                                new THREE.MeshPhongMaterial({
+                                                    color: 0xffffff,
+                                                    shading: THREE.FlatShading
+                                                }), // front
+                                                new THREE.MeshPhongMaterial({
+                                                    color: 0xffffff,
+                                                    shading: THREE.SmoothShading
+                                                }) // side
+                                            ]),
+                                            text = options.text || "Test";
+
+                                        var textGeo = new THREE.TextGeometry(text, {
+
+                                            size: size,
+                                            height: height,
+                                            curveSegments: 4,
+
+                                            font: "optimer",
+                                            weight: "normal",
+                                            style: "normal",
+
+                                            bevelEnabled: false,
+
+                                            material: 0,
+                                            extrudeMaterial: 1
+
+                                        });
+
+                                        textGeo.computeBoundingBox();
+
+                                        var textMesh1 = new THREE.Mesh(textGeo, material);
+
+                                        return textMesh1;
+                                    }
+                                </script>
+
+ <div class="sidebar" style="margin:2.5%;padding:2.5%;display:flex;flex-flow:row wrap;justify-content:space-between;perspective:1200px;transform-style:preserve-3d;">
+        <figure draggable style="width:100px;height:100px;border:0px groove #ddd;float:left;margin:2.5px;perspective:500px;transform-style:preserve-3d;transition:all 0.2s ease;position:relative;background-color:transparent;" ng-repeat="history in app.filehistories.data | filter: report.query | orderBy: [prop,'id'] :maybe">
+          <img src="{{history.media}}", style="width:100%;height:100%;transition:all 0.2s ease;" class="img img-shadow"/>
+          <a class="label btn" ng-click="app.dofunction(history)" style="position:absolute;left:0;top:100%;right:0;text-align:center;border-radius:20px;box-shadow:inset 0 0 30px rgba(250,250,250,0.75),-1px 1px 5px rgba(0,0,0,0.5),inset -1px 1px 5px rgba(0,0,0,0.5);background-color:rgba(0,0,0,0.25);border:2.5px ridge black;transform-origin:50% 50%;transform:translateZ(5px)translateY(-20px);transition:all 0.2s ease;color:black;">{{(history.id | number:0) || history.application.utility}}</a>
+        </figure>
+ </div>
+<div class="col-md-6">
+      <div class="card card-block img-shadow" style="margin:2.4%;padding:2.5%;">
+        <a class="badge" style="position:absolute;z-index:2;right:5px;" ng-click="report.query = ''">
+          <i class="fa fa-close"></i></a>       
+           <input class="pull-right" style="position:absolute;z-index:1;right:5px;" placeholder="Search..." ng-model="report.query">
+ <table class="table table-stripped table-condensed table-hover table-resonsive" style="z-index:0;">
+<thead>
+    <th ng-click="maybe = !maybe;prop = 'appnum'">#</th>
+    <th ng-click="maybe = !maybe;prop = 'id'">ID</th>
+    <th ng-click="maybe = !maybe;prop = 'claims_issued_total'">Issued / Pending</th>
+    <th ng-click="maybe = !maybe;prop = 'art_unit'">Art Unit</th>
+    <th ng-click="maybe = !maybe;prop = 'file.fstat.size'">FileSize</th>
+    <th ng-click="maybe = !maybe;prop = 'title'">Title</th>
+    <th ng-click="maybe = !maybe;prop = 'file.added">Added</th>
+</thead>
+<tbody>
+    <tr ng-repeat="history in app.filehistories.data | filter: report.query | orderBy: [prop,'id'] :maybe" class="animated staggered">
+        <td>{{$index}}</td>
+        <td><strong>{{history.patent}}</strong><br>({{history.application.utility}})</td>
+        <td>{{history.claims_issued_total}} / {{history.claims_pending_total}}<br>({{history.claims_issued_total / history.claims_pending_total | number: 1}})</td>
+        <td ng-bind-html="history.art_unit | highlight: report.query | trustAsHTML">{{history.art_unit}} </td>
+        <td ng-bind-html="history.file.fstat.size | bytes"></td>
+        <td ng-bind-html="history.title | highlight: report.query | trustAsHTML">{{history.title}}</td>
+        <td ng-bind-html="history.file.added | date"></td>
+    </tr>
+</tbody>
+ </table>
+    </body>
+
+</html>

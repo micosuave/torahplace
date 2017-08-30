@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MicoSuave</title>
+<link rel="stylesheet" href="https://lexlab.firebaseapp.com/app.full.min.css">
+</head>
+<body class="dark-bg">
+<nav class="nav navbar navbar-fixed-top">
+<div class="alert btn-glass alert-danger">
+<a class="brand" href="..">
+MICO SUAVE
+</a>
+<ul>
+	<li ng-repeat="site in sites">
+		<a ng-href="{{site.path}}">{{site.name}}</a>
+	</li>
+	</ul>
+</div>
+</nav>
+</body>
+</html>

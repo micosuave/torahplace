@@ -1,0 +1,38 @@
+
+#content-wrapper
+    .page-content
+        // Header Bar
+        .row.header
+            .col-xs-12
+                .user.pull-right
+                    .item.dropdown
+                        a.dropdown-toggle(href='#')
+                            img(src='img/avatar.jpg')
+                        ul.dropdown-menu.dropdown-menu-right
+                            li.dropdown-header
+                            li.divider
+                            li.link
+                                a(href='#')
+                            li.link
+                                a(href='#')
+                            li.link
+                                a(href='#')
+                            li.divider
+                            li.link
+                                a(href='#')
+                    .item.dropdown
+                        a.dropdown-toggle(href='#')
+                            i.fa.fa-bell-o
+                        ul.dropdown-menu.dropdown-menu-right
+                            li.dropdown-header
+                            li.divider
+                            li
+                                a(href='#') Server Down!
+                .meta
+                    .page
+                    .breadcrumb-links
+        // End Header Bar
+        // Main Content
+        div(ui-view='')
+    // End Page Content
+// End Content Wrapper

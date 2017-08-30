@@ -1,0 +1,16 @@
+
+doctype html
+head
+    title D3 Sandbox
+script(type='text/javascript', src='http://d3js.org/d3.v3.min.js')
+script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+script(type='text/javascript', src='/lexlab-starter/public/js/d3/calendar.js')
+link(href='Calendar.css', rel='stylesheet', type='text/css')
+h3  D3 Calendar
+div
+    button#back(name='back') &lt;
+    button#forward(name='forward') &gt;
+    label#currentMonth May 2013
+#chart
+script
+    include ./file.js 

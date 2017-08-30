@@ -1,0 +1,46 @@
+extends layout
+
+block scripts
+  base(href="/app/",target="_top")
+  script
+    | var console = window.console;
+  link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Julius+Sans+One|EB+Garamond&subset=latin,latin-ext")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js")
+  link(href='/llp_core/dist/app.full.min.css', rel='stylesheet', title='CompiledPhD')
+  //-script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js")
+  //-script(src="/llp_core/node_modules/angular/angular.js")
+  script(src='/llp_core/dist/app.bower.js')
+  script(data-require='jszip@2.4.0', data-semver='2.4.0', src='https://cdn.rawgit.com/Stuk/jszip/v2.4.0/dist/jszip.js', data-build='exclude')
+  //-script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-touch.js')
+  script(src='https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js')
+  script(src='/newwidget/dist/adf-widget-testwidget.js')
+  script(src='/getphdwidget/dist/adf-widget-getphd.js')
+  script(src='/pagebuilderwidget/dist/adf-widget-pagebuilder.js')
+  script(src='/collectionwidget/dist/adf-widget-collectionwidget.js')
+  script(src='/treewidget/dist/adf-widget-treewidget.js')
+  script(src='/llp_core/dist/app.mini.js')
+  script(src='/llp_core/dist/minicache.js')
+  script(src="https://www.dropbox.com/static/api/2/dropins.js", id="dropboxjs", data-app-key="si21h6tw2o3msis")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.6/jquery.slimscroll.js")
+  //script(src="/llp_core/modules/common_services/partial/pdfmake/pdfmake.js")
+  link(href="../timetracker/dist/adf-widget-timetracker.css")
+  link(rel="stylesheet",href="../newwidget/src/style.css")
+  link(href="//cdn.materialdesignicons.com/1.1.70/css/materialdesignicons.min.css")
+  script(type="text/javascript")
+    | angular.module('!{application}').value('$firebaseToken', '!{token}');
+  script(type="text/javascript")
+    | angular.module('!{application}').constant('FIREBASE_URL', 'https://!{firebase_url}/');
+  //- script(type="text/javascript")
+  //-   | angular.module('!{application}').factory('userProfile', '!{user});
+  script
+    | CKEDITOR.dtd.$removeEmpty['span','i'] = false;
+block content
+  #maincontent(ui-view='maincontent', class='{{appCtrl.styleClass}}', ng-class="{'blue':($state.current.name === 'login')}",  dynamic-background, background-image="{{config.background}}", background-size="cover", ng-cloak)
+block sidebar
+  pageslide(ps-open="clicked")
+    uxwidget
+    chatPanel
+block header
+  #navcontent( ui-view='navcontent', class='{{nav.styleClass || ".navbar-fixed-top"}}', ng-class="{'collapse':(($state.current.name === 'login')||($state.includes('roartheatre')))}", ng-cloak='', style="z-index:10;max-height:40px!important;")
+      include partials/header

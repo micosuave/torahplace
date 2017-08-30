@@ -1,0 +1,67 @@
+extends ../layout
+
+
+block style
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css", rel="stylesheet")
+    link(rel="stylesheet",href="/llp_core/node_modules/tether/dist/css/tether.css")
+    script(src="/llp_core/node_modules/tether/dist/js/tether.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js", integrity="sha256-GMscmjNs6MbZvXG2HRjP3MpdOGmXv078SRgH7M723Mc= sha512-1wnhBRtA+POGVA0yREk2RlDbJEdkNvMuRBGjT1FCI5wXmpiQHZWDIB8MpANBWM/GKSPDgCA/7HTrAIFgv70/Jw==", crossorigin="anonymous")
+    
+block scripts
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js")
+    script(src='/llp_core/dist/app.bower.js')
+    script(data-require='jszip@2.4.0', data-semver='2.4.0', src='https://cdn.rawgit.com/Stuk/jszip/v2.4.0/dist/jszip.js', data-build='exclude')
+    link(rel="stylesheet", href="/llp_core/dist/app.full.min.css")
+    // We use client cookies to save the user credentials
+    script(src='//code.angularjs.org/1.2.16/angular-cookies.min.js', data-build='exclude')
+    // Auth0 Lock script and AngularJS module
+    script(src='//cdn.auth0.com/js/lock-7.9.min.js', data-build='exclude')
+    // angular-jwt and angular-storage
+    script(src='/llp_core/ngGAPI-master/nggapi_lib/dist_lib/nggapi_base.min.js')
+    script(src='/llp_core/ngAnnotateText/ng-annotate-text-latest.js')
+    script(src='/llp_core/node_modules/papaparse/papaparse.js')
+    script(src='/llp_core/node_modules/angular-file-upload/dist/angular-file-upload.js')
+    script(src='/llp_core/node_modules/angular-local-storage/dist/angular-local-storage.js')
+    script(src='/llp_core/bower_components/ng-file-upload/ng-file-upload.js')
+    script(src='/llp_core/bower_components/ng-sortable/dist/ng-sortable.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-touch.js')
+    script(type='text/javascript', src='//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js', data-build='exclude')
+    script(type='text/javascript', src='//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js', data-build='exclude')
+    script(src='//cdn.auth0.com/w2/auth0-angular-4.js', data-build='exclude')
+    script(src='https://rawgit.com/alexk111/ngImgCrop/master/compile/unminified/ng-img-crop.js', data-build='exclude')
+    script(src='/llp_core/dist/app.enterprise.js', data-build='exclude')
+    script(src="/llp_core/modules/common_services/common_services.js")
+    script
+        |angular.module('authentication').value('$firebaseToken', '!{token}');
+    script
+        |angular.module('authentication').value('_csrfToken', '!{_csrf}');
+    script(src='/newwidget/dist/adf-widget-testwidget.js', data-build='exclude')
+    script(src='/getphdwidget/dist/adf-widget-getphd.js', data-build='exclude')
+    script(src='/pagebuilderwidget/dist/adf-widget-pagebuilder.js', data-build='exclude')
+    script(src='/collectionwidget/dist/adf-widget-collectionwidget.js', data-build='exclude')
+    script(src='/treewidget/dist/adf-widget-treewidget.js', data-build='exclude')
+    script(src='/llp_core/dist/templateCache.js', data-build='exclude')
+    script(src="https://www.dropbox.com/static/api/2/dropins.js", id="dropboxjs", data-app-key="si21h6tw2o3msis")
+    script(type="text/javascript", src="/llp_core/bower_components/angular-filepicker/dist/angular_filepicker.js")
+    link(rel="stylesheet", href="/lexlab-starter/public/css/ng-admin.min.css")
+    link(rel="stylesheet", href="//cdn.jsdelivr.net/font-hack/2.018/css/hack-extended.min.css")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js')
+    script(src="/lexlab-starter/public/js/lib/ng-admin.min.js")
+    script(src="../timetracker/angular-time-pausetracker/js/roundProgress.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.6/jquery.slimscroll.js")
+    script(src="../timetracker/dist/adf-widget-timetracker.js")
+    link(href="../timetracker/dist/adf-widget-timetracker.css")
+    link(href="//cdn.materialdesignicons.com/1.1.70/css/materialdesignicons.min.css")
+    
+block hidden
+    script(src="/lexlab-starter/public/blogApp/client/js/blog.js")
+    
+block content
+    div(ng-repeat='post in blog.posts track by $index')
+        // ng-annotate-text(class="card card-block", text="post.body")
+        ng-include(src="'/getphdwidget/src/view.html'", class="card card-rounded", ng-init="phd = post.body; config = post.body;")
+        // div(ng-controller='BlogPostController as postCtrl')
+            ng-annotate-text(text='postCtrl.body')
+    div(ui-view="blogcontent", ng-controller="BlogController as blog")
+    pageslide(ps-open="checked", ps-class="card-dark", ps-side="right", ps-push="false")
+        chat-panel

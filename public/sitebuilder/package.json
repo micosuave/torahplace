@@ -1,0 +1,32 @@
+{
+  "name": "sitebuilder",
+  "version": "0.0.0",
+  "description": "asd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo `date`"
+  },
+  "repository": {
+    "type": "git",
+    "url": "null"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "michael@mylionlaw.com",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.13.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "file": "^0.2.2",
+    "firebase": "^2.3.2",
+    "firebase-token-generator": "^2.0.0",
+    "passport": "^0.3.2",
+    "serve-favicon": "^2.3.0",
+    "serve-index": "^1.7.2",
+    "serve-static": "^1.10.0",
+    "vhost": "^3.0.2"
+  }
+}

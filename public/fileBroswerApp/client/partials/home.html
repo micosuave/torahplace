@@ -1,0 +1,126 @@
+<div class="container-fluid" ng-controller="HomeCtrl" style="padding:5vmin;padding-top:10vmin;">
+        <div class="row" style="z-index:0;">
+              <div class="col-md-6 file-viewer card card-block card-fancy">
+
+
+                                
+
+                                <pre><code>{{fileViewer}}</code></pre>
+                        </div>
+                  <div class="tree-browser col-md-6">
+                        <!--<a class="tiny button" href="" ng-click="toggle()">Open sidebar</a>-->
+                         <js-tree tree-events="select_node:nodeSelected" tree-ajax="/files/publictree" tree-core="tree_core" tree-plugins="dnd, types, contextmenu,checkbox,search,state"></js-tree>
+
+                        <js-tree tree-events="select_node:nodeSelected" tree-ajax="/files/tree" tree-core="tree_core" tree-plugins="dnd, types, contextmenu,checkbox,search,state"></js-tree>
+                </div>
+        </div>
+                
+                       
+             
+
+        
+        <div class="" ng-controller="AppController">
+                <div ng-show="uploader.isHTML5">
+                        <!-- 3. nv-file-over uploader="link" over-class="className" -->
+                        <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                                Base drop zone
+                        </div>
+
+                        <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                        <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+                                <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
+                                        Another drop zone with its own settings
+                                </div>
+                        </div>
+                </div>
+
+                <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                Multiple
+                <input type="file" nv-file-select="" uploader="uploader" multiple />
+                <br/> Single
+                <input type="file" nv-file-select="" uploader="uploader" />
+
+                        <h3>Upload queue</h3>
+                        <p>Queue length: {{ uploader.queue.length }}</p>
+
+                        <table class="table">
+                                <thead>
+                                        <tr>
+                                                <th width="50%">Name</th>
+                                                <th ng-show="uploader.isHTML5">Size</th>
+                                                <th ng-show="uploader.isHTML5">Progress</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr ng-repeat="item in uploader.queue">
+                                                <td><strong>{{ item.file.name }}</strong></td>
+                                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                                <td ng-show="uploader.isHTML5">
+                                                        <div class="progress" style="margin-bottom: 0;">
+                                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                        </div>
+                                                </td>
+                                                <td class="text-center">
+                                                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap>
+                                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                                <span class="glyphicon glyphicon-upload"></span> Upload
+                                                        </button>
+                                                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                                                <span class="glyphicon glyphicon-trash"></span> Remove
+                                                        </button>
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+
+                        <div>
+                                <div>
+                                        Queue progress:
+                                        <div class="progress" style="">
+                                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                        </div>
+                                </div>
+                                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload all
+                                </button>
+                                <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                </button>
+                                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove all
+                                </button>
+                        </div>
+
+                </div>
+
+<div ng-controller="UploadCtrl" class="card card-block">
+                            <p class="dl-horizontal card-header">
+                                        <form class="row" ng-submit="getphd(appnum)">
+                                                <input type="text" ng-model="appnum" />
+                                                <input type="submit" ng-submit="getphd(appnum)" />
+                                                <input filepicker type="filepicker-dragdrop" data-fp-services="BOX,COMPUTER,DROPBOX,EVERNOTE,FACEBOOK,GMAIL,IMAGE_SEARCH,FLICKR,FTP,GITHUB,GOOGLE_DRIVE,SKYDRIVE,PICASA,URL,WEBCAM,INSTAGRAM,VIDEO,ALFRESCO,CUSTOMSOURCE,CLOUDDRIVE,IMGUR,CLOUDAPP,CONVERT"
+                                                on-success="onSuccess(event.fpfile)" style="box-shadow: -2px 2px 5px black;" />
+                                        </form>
+                                </p>
+                        </div>
+        </div>
+<div class="row" style="z-index:1">
+                <div ng-repeat="file in files track by $index" class="card card-fancy card-block card-rounded card-thick sub-independent img" style="width:125px;height:125px;">
+                        <img ng-src="{{file.url | fpConvert: {w:100,h:100,blur:15,vector:[25,25]} || 'https://www.lexspace.net/llp_core/img/lll3.svg'}}"
+                        style="width:100px,height:100px;">
+<div filepicker-preview url="file.url" style="width:90%; height:500px"></div>
+
+                        <!--<div filepicker-preview url="file.url" style="width:200px;height:400px;position:absolute;" class="showonhover"></div>-->
+
+                </div>
+        </div>
+</div>

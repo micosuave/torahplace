@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .card.card-fancy.card-thick.col-sm-6.col-sm-offset-3.sub-independent(style="margin-top:6rem;")
+      .card-header
+        h3.card-title Create Account
+      form.form-horizontal.card-block(id='signup-form', method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .form-group
+             label.col-sm-3.control-label(for='email') Email
+             .col-sm-7
+               input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+          .form-group
+             label.col-sm-3.control-label(for='password') Password
+             .col-sm-7
+               input.form-control(type='password', name='password', id='password', placeholder='Password', required)
+          .form-group
+             label.col-sm-3.control-label(for='confirmPassword') Confirm Password
+             .col-sm-7
+               input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', required)
+          .form-group
+             label.col-sm-3.control-label(for="invitecode") Invite Code
+             .col-sm-7
+               input.form-control(type="password", name="invitecode", id="invitecode", placeholder="Invite Code", required)
+          .col-sm-offset-3.col-sm-6
+          
+            label.col-sm-9.control-label(style="text-align:left;",for="agreeconditions") By checking 'I agree' and clicking 'submit' below, you hereby accept and agree to the terms &amp; conditions as laid out in your email invitation of this limited, confidential preview of LexSpace™ and LexLab™ by Lion Legal Products, Inc.    
+            .form-group.col-sm-3.col-sm-offset-2(style="")
+             label.control-label(style="vertical-align:top;margin-bottom:15px;width:10rem;margin-right:-40px;",for="agreeconditions") I agree&nbsp;&nbsp;&nbsp;&nbsp;
+               input(type="checkbox", name="agreeconditions", id="agreeconditions",  required)    
+              br
+             button.btn.btn-primary(type='submit') Submit
