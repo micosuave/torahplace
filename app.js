@@ -91,7 +91,7 @@ conn.once('open', function () {
    * Express configuration.
    */
   app.set('port', process.env.PORT || 80)
-  app.set('views', './lexlab-starter/')
+  app.set('views', './torahplace/')
   app.set('view engine', 'jade')
   app.use(compress())
   // app.use(sass({
