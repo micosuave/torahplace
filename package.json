@@ -101,7 +101,7 @@
     "shelljs": "0.7.3",
     "stripe": "^4.0.0",
     "textract": "2.0.0",
-    "tree-kill": "^1.1.0",
+    "tree-kill": "^1.2.2",
     "tumblr.js": "1.1.1",
     "twilio": "^2.5.2",
     "twit": "^2.1.1",
