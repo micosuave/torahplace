@@ -55,7 +55,7 @@ var messagesController = require('./controllers/messages')
 var pressPagesController = require('./controllers/press')
 var roarPagesController = require('./controllers/ROAR')
 var ptoController = require('./controllers/pto')
-    // var urlshortener = require('../url-shortener/app')
+var urlshortener = require('../url-shortener/app')
     /**
      * API keys and Passport configuration.
      */
@@ -188,7 +188,8 @@ conn.once('open', function() {
     app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount)
     app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink)
 
-    // app.use('/l', urlshortener)
+    app.use('/l', urlshortener)
+    app.use('/roar', urlshortener)
 
     /**
      * API examples routes.
@@ -421,34 +422,34 @@ conn.once('open', function() {
         return res.sendFile(dir + '/images.json')
     })
     app.post('/lexpress/:domain', function(req, res, next) {
-        var User = require('./models/User')
-        var fs = require('fs')
-        var path = require('path')
-            // var use = req.params.user
-        var mkdir = require('mkdirp')
+            var User = require('./models/User')
+            var fs = require('fs')
+            var path = require('path')
+                // var use = req.params.user
+            var mkdir = require('mkdirp')
 
-        var user = req.user
-        var domain = req.params.domain
+            var user = req.user
+            var domain = req.params.domain
 
-        // var email = use + '@' + domain
-        // if (domain){
-        var dest = path.join(process.cwd(), 'files', domain)
-        mkdir(dest, function(err, made) {
-            if (err) {
-                console.log(err)
-            }
-            fs.writeFile(dest + '.html', req.body.file, function(err) {
-                console.log(err)
-                res.status(202).end()
+            // var email = use + '@' + domain
+            // if (domain){
+            var dest = path.join(process.cwd(), 'files', domain)
+            mkdir(dest, function(err, made) {
+                if (err) {
+                    console.log(err)
+                }
+                fs.writeFile(dest + '.html', req.body.file, function(err) {
+                    console.log(err)
+                    res.status(202).end()
+                })
             })
-        })
 
-        // }
-        // else{
-        //  res.status(400).end()
-        // }
-    })
-    app.get('/ROAR', roarPagesController.getPagesServedByAngular)
+            // }
+            // else{
+            //  res.status(400).end()
+            // }
+        })
+        // app.get('/ROAR', roarPagesController.getPagesServedByAngular)
     app.get('/timetracker', express.static(path.join(process.cwd(), 'timetracker')))
 
     var getter = require('./public/fileupload/pto-download')
