@@ -21,7 +21,7 @@
     "bcrypt-nodejs": "^0.0.3",
     "bitgo": "^11.7.0",
     "body-parser": "^1.19.0",
-    "chart.js": "^2.4.0",
+    "chart.js": "^2.9.4",
     "cheerio": "^0.22.0",
     "clockwork": "^0.1.0",
     "compression": "^1.7.4",
