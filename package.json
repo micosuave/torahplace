@@ -105,7 +105,7 @@
     "tumblr.js": "1.1.1",
     "twilio": "^3.51.0",
     "twit": "^2.1.1",
-    "validator": "5.5.0",
+    "validator": "13.7.0",
     "vhost": "^3.0.2",
     "videogular": "^1.4.0",
     "videogular-angulartics": "^1.4.0",
