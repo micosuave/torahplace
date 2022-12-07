@@ -33,7 +33,7 @@
     "download": "^5.0.2",
     "ejs": "^2.3.4",
     "errorhandler": "^1.4.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-directory": "0.0.2",
     "express-flash": "^0.0.2",
     "express-jwt": "^3.3.0",
